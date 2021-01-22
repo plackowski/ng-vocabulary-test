@@ -1,0 +1,20 @@
+<mat-card>
+  <div class="header">
+    <span class="word">{{ word }}</span>
+    <span class="stars" [ngClass]="starsClass"></span>
+  </div>
+
+  <ul>
+    <li
+      *ngFor="let answer of testedWord.answers"
+      (click)="check(answer)"
+      [appColorAnswer]="{
+        answerId: answer.id,
+        selectedAnswerId: selectedAnswerId,
+        correctAnswerId: testedWord.word.id
+      }"
+    >
+      {{ answer.value }}
+    </li>
+  </ul>
+</mat-card>

@@ -1,0 +1,91 @@
+@import "src/theme/colors";
+
+:host {
+  margin: 10px;
+  flex-basis: 100%;
+
+  @media (min-width: 1000px) {
+    flex-basis: calc(50% - 20px);
+  }
+}
+
+ul {
+  display: flex;
+  font-size: 14px;
+  margin: 5px 0;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  padding: 0;
+}
+
+ul li {
+  border: 3px solid $dark;
+  border-radius: 5px;
+  padding: 5px 8px;
+  min-width: 85px;
+  text-align: center;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  cursor: pointer;
+  flex: 1;
+
+  @media (min-width: 1000px) {
+    min-width: 150px;
+    height: 45px;
+    font-size: 18px;
+  }
+
+  &.missed {
+    border-color: $success;
+    border-style: dashed;
+  }
+
+  &.correct {
+    border-color: $success;
+    background-color: $success;
+    color: $white;
+  }
+
+  &.incorrect {
+    border-color: $error;
+    background-color: $error;
+    color: $white;
+  }
+}
+
+.header {
+  display: flex;
+}
+
+.word {
+  font-size: 24px;
+  font-weight: 700;
+  padding-left: 3px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.stars {
+  background-image: url(/assets/star.svg);
+  height: 16px;
+  width: 16px;
+  display: block;
+  margin-left: 10px;
+  background-size: contain;
+
+  &.x1 {
+    width: 16px;
+  }
+
+  &.x2 {
+    width: 32px;
+  }
+
+  &.x3 {
+    width: 48px;
+  }
+}

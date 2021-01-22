@@ -1,13 +1,28 @@
 import { TestBed } from '@angular/core/testing';
+import { MockComponent } from 'ng-mocks';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatIconModule } from '@angular/material/icon';
 
+import { LogoComponent } from '@app/shared/components/logo/logo.component';
+import { ToggleComponent } from '@app/shared/components/toggle/toggle.component';
 import { AppComponent } from '@app/app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AppComponent],
+      imports: [
+        RouterTestingModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatSlideToggleModule,
+      ],
+      declarations: [
+        AppComponent,
+        MockComponent(LogoComponent),
+        MockComponent(ToggleComponent),
+      ],
     }).compileComponents();
   });
 
@@ -15,20 +30,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'ng-vocabulary-test'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('ng-vocabulary-test');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain(
-      'ng-vocabulary-test app is running!'
-    );
   });
 });

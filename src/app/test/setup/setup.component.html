@@ -1,0 +1,59 @@
+<div class="welcome">{{ MESSAGES.WELCOME }}</div>
+
+<div class="container">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select
+        [formControlName]="FORM_CONTROLS.CATEGORY"
+        (selectionChange)="onCategoryChange()"
+      >
+        <mat-option *ngFor="let option of categories" [value]="option">
+          {{ option | categoryName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Level</mat-label>
+      <mat-select
+        [formControlName]="FORM_CONTROLS.LEVEL"
+        [disabled]="isCategoryDisabled"
+        (selectionChange)="onLevelChange()"
+      >
+        <mat-option *ngFor="let option of levels" [value]="option">
+          {{ option | level }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Mode</mat-label>
+      <mat-select
+        [formControlName]="FORM_CONTROLS.MODE"
+        [disabled]="isDisabled"
+      >
+        <mat-option [value]="MODE.LANG_PL">EN - PL</mat-option>
+        <mat-option [value]="MODE.PL_LANG">PL - EN</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>How many words?</mat-label>
+      <mat-select
+        [formControlName]="FORM_CONTROLS.BASE_SIZE"
+        [disabled]="isDisabled"
+      >
+        <mat-option value="10">10</mat-option>
+        <mat-option value="20">20</mat-option>
+        <mat-option value="50">50</mat-option>
+        <mat-option value="100">100</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      [disabled]="formGroup.invalid"
+    >
+      Start!
+    </button>
+  </form>
+</div>

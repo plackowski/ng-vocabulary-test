@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <app-logo></app-logo>
+  <div class="flex-stretch"></div>
+  <app-toggle [control]="toggleControl"></app-toggle>
+</mat-toolbar>
+
+<div class="content mat-app-background">
+  <router-outlet></router-outlet>
+</div>
